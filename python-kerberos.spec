@@ -6,16 +6,16 @@
 
 Summary:	High-level interface to Kerberos
 Summary(pl.UTF-8):	Wysokopoziomowy interfejs do Kerberosa
-Name:		python-pykerberos
-Version:	1.2.4
+Name:		python-kerberos
+Version:	1.3.1
 Release:	1
 License:	Apache v2.0
 Group:		Libraries/Python
-#Source0Download: https://pypi.org/simple/pykerberos/
-Source0:	https://files.pythonhosted.org/packages/source/p/pykerberos/pykerberos-%{version}.tar.gz
-# Source0-md5:	3a1095035ef26f9551cdfc2a52ee02a5
-Patch0:		pykerberos-heimdal.patch
-URL:		https://pypi.org/project/pykerberos/
+#Source0Download: https://pypi.org/simple/kerberos/
+Source0:	https://files.pythonhosted.org/packages/source/k/kerberos/kerberos-%{version}.tar.gz
+# Source0-md5:	88653e69baece33385e014177d61865d
+Patch0:		kerberos-heimdal.patch
+URL:		https://pypi.org/project/kerberos/
 %if %{with krb5}
 BuildRequires:	krb5-devel
 %else
@@ -48,20 +48,20 @@ cały szkielet Kerberosa na rzecz ograniczonego zbioru funkcji,
 wystarczających do uwierzytelniania klienta/serwera Kerberosa w
 oparciu o <http://www.ietf.org/rfc/rfc4559.txt>.
 
-%package -n python3-pykerberos
+%package -n python3-kerberos
 Summary:	High-level interface to Kerberos
 Summary(pl.UTF-8):	Wysokopoziomowy interfejs do Kerberosa
 Group:		Libraries/Python
 Requires:	python3-modules >= 1:3.2
 
-%description -n python3-pykerberos
+%description -n python3-kerberos
 This Python package is a high-level wrapper for Kerberos (GSSAPI)
 operations. The goal is to avoid having to build a module that wraps
 the entire Kerberos framework, and instead offer a limited set of
 functions that do what is needed for client/server Kerberos
 authentication based on <http://www.ietf.org/rfc/rfc4559.txt>.
 
-%description -n python3-pykerberos -l pl.UTF-8
+%description -n python3-kerberos -l pl.UTF-8
 Ten moduł Pythona to wysokopoziomowe obudowanie operacji Kerberosa
 (GSSAPI). Celem jest uniknięcie potrzeby budowania moduł opakowującego
 cały szkielet Kerberosa na rzecz ograniczonego zbioru funkcji,
@@ -69,7 +69,7 @@ wystarczających do uwierzytelniania klienta/serwera Kerberosa w
 oparciu o <http://www.ietf.org/rfc/rfc4559.txt>.
 
 %prep
-%setup -q -n pykerberos-%{version}
+%setup -q -n kerberos-%{version}
 %if %{without krb5}
 %patch -P0 -p1
 %endif
@@ -102,15 +102,15 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc README.txt pysrc/kerberos.py
+%doc README.md pysrc/kerberos.py
 %{py_sitedir}/kerberos.so
-%{py_sitedir}/pykerberos-%{version}-py*.egg-info
+%{py_sitedir}/kerberos-%{version}-py*.egg-info
 %endif
 
 %if %{with python3}
-%files -n python3-pykerberos
+%files -n python3-kerberos
 %defattr(644,root,root,755)
-%doc README.txt pysrc/kerberos.py
+%doc README.md pysrc/kerberos.py
 %{py3_sitedir}/kerberos.cpython-*.so
-%{py3_sitedir}/pykerberos-%{version}-py*.egg-info
+%{py3_sitedir}/kerberos-%{version}-py*.egg-info
 %endif
