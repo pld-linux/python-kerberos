@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_with	krb5	# MIT Kerberos instead of heimdal
-%bcond_without	python2 # CPython 2.x module
+%bcond_with	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
 Summary:	High-level interface to Kerberos
